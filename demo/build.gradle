@@ -18,7 +18,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(":library")
-//    implementation 'com.github.bytedance:tailor:1.0.9'
+    if (project.file("local.properties")) {
+        api project(":library")
+    } else {
+        implementation 'com.github.hangox:tailor:1.1.1'
+    }
+
     implementation 'com.android.support:appcompat-v7:28.0.0'
 }
